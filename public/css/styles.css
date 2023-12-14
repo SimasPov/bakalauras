@@ -1,0 +1,22 @@
+.about-nav > ul {
+    list-style-type: none;
+}
+.about-nav-link {
+    color: black;
+}
+.about-nav-link:hover {
+    color: black;
+}
+.about-nav {
+    bottom: 0;
+    right: 0;
+    position: sticky;
+    z-index: 3000;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+}
