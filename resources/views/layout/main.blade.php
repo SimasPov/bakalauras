@@ -17,9 +17,9 @@
     </div>
     <hr>
 
-
+    @include('includes/footer')
 </div> <!-- /container -->
-@include('includes/footer')
+
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

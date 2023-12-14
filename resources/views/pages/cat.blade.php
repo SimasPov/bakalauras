@@ -19,7 +19,7 @@
         <div class="col-md-4">
             <h2>{{str_limit($cat->title, 25)}}</h2>
             <p>{{str_limit($cat->body, 100)}}</p>
-            <p><a class="btn btn-default" href="post/forum/{{$cat->id}}" role="button" >Daugiau <span class="glyphicon glyphicon-chevron-right"></span></a></p>
+            <p><a class="btn btn-default" href="/forum/post/{{$cat->id}}" role="button" >Daugiau <span class="glyphicon glyphicon-chevron-right"></span></a></p>
         </div>
     @endforeach
 @endsection

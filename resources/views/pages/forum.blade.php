@@ -9,8 +9,8 @@
             Pasirinkti kategoriją <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-            @foreach($posts as $post)
-                <li><a class="dropdown-item" href="/forum/{{$post->category}}">{{$post->category}}</a></li>
+            @foreach($cats as $cat)
+                <li><a class="dropdown-item" href="/forum/{{$cat->category}}">{{$cat->category}}</a></li>
             @endforeach
         </ul>
     </div>

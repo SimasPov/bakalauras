@@ -24,8 +24,8 @@ class ForumController extends Controller
 
     public function showPosts() {
         $posts = ForumPosts::all();
-
-        return view('pages.forum', compact('posts'));
+        $cats = DB::table('forum_posts')->select('category')->distinct()->get();
+        return view('pages.forum', compact('posts', 'cats'));
     }
     public function showPost(ForumPosts $post) {
 
@@ -62,7 +62,7 @@ class ForumController extends Controller
     public function showCat($category) {
 
         $cats = ForumPosts::where('category', '=', $category)->get();
-        $posts = ForumPosts::all();
+        $posts = DB::table('forum_posts')->select('category')->distinct()->get();
         return view('pages.cat', compact('cats', 'posts'));
     }
 }
