@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Comic;
 use App\Cart;
+use App\Order;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Auth;
 use Closure;
+use Stripe\Stripe;
+
 
 class ShoppingCartController extends Controller
 {
@@ -54,5 +57,41 @@ class ShoppingCartController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         return view('pages.cart', ['comics' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+    }
+
+    public function storeOrder(Request $request) {
+
+        if (!Session::has('cart')) {
+            return view('/');
+        }
+
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $total = $cart->totalPrice;
+        $session = Session::getId();
+
+        $this->validate(request(), [
+            'ship_name' => 'required|string',
+            'ship_surname' => 'required|string',
+            'ship_address' => 'required|string',
+            'post_code' => 'required|integer',
+            'email' => 'required|string|email|regex:/^([a-z0-9+-]+)(.[a-z0-9+-]+)*@([a-z0-9-]+.)+[a-z]{2,6}$/ix'
+        ]);
+
+        $orderData = [
+            'user_id' => Auth::check() ? Auth::id() : 0,
+            'ship_name' => request('ship_name'),
+            'ship_surname' => request('ship_surname'),
+            'ship_address' => request('ship_address'),
+            'email' => request('email'),
+            'post_code' => request('post_code'),
+            'total_price' => $total,
+            'order_status' => 'pending',
+            'session_id' => $session
+        ];
+        Order::create($orderData);
+
+
+        return redirect('/checkout');
     }
 }

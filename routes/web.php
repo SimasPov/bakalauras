@@ -46,6 +46,14 @@ Route::get('/admin-comics', 'ComicController@dashboard');
 
 Route::get('/shopping-cart', 'ShoppingCartController@getCart');
 
+Route::post('/shopping-cart/store-order', 'ShoppingCartController@storeOrder')->name('store-order');
+
+Route::get('/checkout', 'CheckoutController@checkout')->name('checkout');
+
+Route::get('/checkout/success', 'CheckoutController@success')->name('success');
+
+Route::get('/checkout/failure', 'CheckoutController@failure')->name('failure');
+
 Route::get('/add-to-cart/{id}', 'ShoppingCartController@getAddTocart');
 
 Route::get('/reduce/{id}', 'ShoppingCartController@getReduceByOne');
@@ -55,6 +63,8 @@ Route::get('/remove/{id}','ShoppingCartController@getRemoveItem');
 Route::get('/search/', 'PublicController@showSearch')->name('search');
 
 Route::get('/about', 'PublicController@showAbout');
+
+Route::get('/orders', 'PostController@showOrders');
 
 Route::get('/forum', 'ForumController@showPosts');
 

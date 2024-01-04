@@ -3,7 +3,7 @@
 @section('content')
     <h1>Pirkinių krepšelis</h1>
     <hr>
-    @if(Session::has('cart'));
+    @if(Session::has('cart'))
         <div class="row">
             <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
                 <ul class="list-group">
@@ -32,11 +32,51 @@
         </div>
     </div>
     <hr>
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <button type="button" class="btn btn-success">Pirkti</button>
+    <form method="POST" action="/shopping-cart/store-order" enctype="multipart/form-data" class="form-horizontal" >
+        {{csrf_field()}}
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="ship_name">Vardas</label>
+                    <input type="text" id="ship_name" name="ship_name" class="form-control" required>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="ship_surname">Pavardė</label>
+                    <input type="text" id="ship_surname" name="ship_surname" class="form-control" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="ship_address">Adresas</label>
+                    <input type="text" id="ship_address" name="ship_address" class="form-control" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="post_code">Pašto kodas</label>
+                    <input type="number" id="post_code" name="post_code" class="form-control" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="email">El. paštas</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Pirkti</button>
+    </form>
+
     @else
         <div class="row">
             <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">

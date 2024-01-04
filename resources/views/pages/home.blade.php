@@ -2,6 +2,15 @@
 
 
 @section('content')
+    @if(Session::has('success'))
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+                <div id="charge-message" class="alert alert-success">
+                    {{ Session::get('succcess') }}
+                </div>
+            </div>
+        </div>
+    @endif
     <h1>Komiksai</h1>
     <div class="input-group">
         <form action="{{ route('search') }}" method="GET" class="form-inline">

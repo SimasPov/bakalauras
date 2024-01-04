@@ -30,6 +30,7 @@
                     <li><a class="dropdown-item" href="/new-post">Nauja naujiena</a></li>
                     <li><a class="dropdown-item" href="/new-comic">Naujas komiksas</a></li>
                     <li><a class="dropdown-item" href="/admin">Valdymas</a></li>
+                    <li><a class="dropdown-item" href="/orders">Užsakymai</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a class="dropdown-item" href="/logout">Atsijungti</a></li>
                     @else

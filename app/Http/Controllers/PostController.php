@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -76,5 +77,12 @@ class PostController extends Controller
         }
         else return view('pages.restrict');
     }
+    public function showOrders() {
+        if(Auth::id() == 1) {
+            $orders = Order::all();
 
+            return view('pages.orders', compact('orders'));
+        }
+        else return view('pages.restrict');
+    }
 }
